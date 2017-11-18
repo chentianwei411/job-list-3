@@ -11,6 +11,9 @@
   <body>
     <div class="container-fluid">
       <%= render "common/navbar"%>
+      <div style="height:55px;">
+        <!-- 这个代码块是用于nav固定在首页的时候,独占空间；使用.navbar-fixed-top -->
+      </div>
       <%= render :partial => "common/flashes"%>
       <%= yield %>
     </div>
