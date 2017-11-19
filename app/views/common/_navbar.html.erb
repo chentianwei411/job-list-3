@@ -37,8 +37,11 @@
                   <ul class="dropdown-menu" style="background-color:lightblue;">
                     <li class="dropdown-header">用户相关</li>
                     <li><%= link_to("退出登路", destroy_user_session_path, method: :delete)%></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">其他</li>
+                    <% if current_user.admin?%>
+                      <li class="divider"></li>
+                      <li class="dropdown-header">其他</li>
+                      <li><%= link_to("admin后台", admin_jobs_path)%></li>
+                    <% end %>
                   </ul>
                 </li>
               <% end %>
