@@ -4,5 +4,6 @@
     <%= f.input :wage_upper_bound, label:"薪资上线" %>
     <%= f.input :wage_lower_bound, label:"薪资下线",hint:"不能少于0" %>
     <%= f.input :contact_email %>
+    <%= f.input :is_hidden%>
   <%= f.submit "提交", class:"btn btn-default", data:{ disable_with: "Subming..."}%>
 <% end %>
