@@ -27,4 +27,6 @@ def hide!
   self.save
 end
 
+scope :publish, -> {where(:is_hidden => false)}
+scope :recent, -> {order('created_at desc')}
 end
