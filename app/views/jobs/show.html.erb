@@ -1,5 +1,6 @@
 <div class="col-md-12">
   <h1><%= @job.title %></h1>
   <hr>
+  <%= link_to("上传简历",new_job_resume_path(@job), class:"btn btn-primary")%>
   <%= simple_format(@job.description) %>
 </div>
