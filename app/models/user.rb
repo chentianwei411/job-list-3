@@ -24,6 +24,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :resumes
+  has_many :jobs
   def admin?
     is_admin
     # 在user中 add_column :users, :is_admin, :boolean, default: false

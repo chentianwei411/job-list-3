@@ -1,22 +1,4 @@
 <h1><%= @job.title%>的简历</h1>
 <p><%= @job.description %></p>
 <hr>
-<% @resumes.each do |resume| %>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel-title">投简历的人的名字，或邮箱</div>
-        </div>
-      </div>
-    </div>
-    <div class="panel-body"><%= simple_format(resume.content)%></div>
-    <div class="panel-footer">
-      <% if resume.attachment.present? %>
-        <%= link_to("Download Resume", resume.attachment_url ) %>
-      <% else %>
-         NO attachment
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= render :partial => "resume", :collection => @resumes, :as => :resume %>
