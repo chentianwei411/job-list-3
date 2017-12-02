@@ -6,7 +6,9 @@
   <thead>
     <tr>
       <th class="success">Title</th>
-      <th class="danger">description</th>
+      <th>投递简历数量</th>
+      <th>薪资上限</th>
+      <th>薪资下限</th>
       <th>发布时间</th>
     </tr>
   </thead>
@@ -14,15 +16,12 @@
       <% @jobs.each do |job| %>
         <tr>
           <td>
-            <!-- <% if job.is_hidden %>
-              <span style="color: red;">(未发布)</span>
-            <% else%>
-              <span style="color: green;">(已发布)</span>
-            <% end %> -->
             <%= render_job_status(job)%>
             <%= link_to(job.title,admin_job_path(job)) %>
           </td>
-          <td><%= job.description %></td>
+          <td><%= link_to(job.resumes.count,admin_job_resumes_path(job))%></td>
+          <td><%= job.wage_lower_bound %></td>
+          <td><%= job.wage_upper_bound %></td>
           <td><%= job.created_at %></td>
           <td><%= link_to("Edit", edit_admin_job_path(job))%> |
               <%= link_to("Destroy", admin_job_path(job), method: :delete,
