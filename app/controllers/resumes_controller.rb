@@ -1,5 +1,9 @@
 class ResumesController < ApplicationController
+  before_action :authenticate_user!
 
+  def index
+    @resumes = current_user.resumes
+  end
 
   def new
     @job = Job.find(params[:job_id])
@@ -19,6 +23,12 @@ class ResumesController < ApplicationController
       render :new
     end
   end
+
+  # def destroy
+  #   @resume = Resume.find(params[:id])
+  #   @resume.destroy
+  #   redirect_to job_resumes_path, alert: "Destroy!"
+  # end
 
   private
 

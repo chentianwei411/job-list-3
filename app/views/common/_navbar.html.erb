@@ -36,6 +36,8 @@
                   </a>
                   <ul class="dropdown-menu" style="background-color:lightblue;">
                     <li class="dropdown-header">用户相关</li>
+                    <li><%= link_to("我的简历",job_resumes_path(:job_id) )%>
+                    </li>
                     <li><%= link_to("退出登路", destroy_user_session_path, method: :delete)%></li>
                     <% if current_user.admin?%>
                       <li class="divider"></li>
@@ -47,7 +49,5 @@
               <% end %>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
 </nav>

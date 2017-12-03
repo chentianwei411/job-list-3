@@ -1,0 +1,21 @@
+<div class="col-md-12">
+
+<h2 class="text-center"> 我投的简历 </h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th> Content </th>
+      <th> attachment </th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resumes.each do |r| %>
+      <tr>
+        <td> <%= r.content %> </td>
+        <td> <%= link_to("Download", r.attachment_url) %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
