@@ -14,11 +14,11 @@
 #
 
 class Job < ApplicationRecord
-  validates :title, :description, :wage_upper_bound, :wage_lower_bound, presence: true
+  validates :title,:wage_lower_bound, presence: true
   validates :wage_lower_bound, numericality:{greater_than: 0}
 
-  has_many :resumes
-  belongs_to :user
+  has_many :resumes, dependent: :destroy
+  # 执行callback
 
 def publish!
   self.is_hidden = false

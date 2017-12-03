@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       member do
         patch :publish
         patch :hide
+        patch :publish_all
+        patch :hide_all
       end
     end
   end

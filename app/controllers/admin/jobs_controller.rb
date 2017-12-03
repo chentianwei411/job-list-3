@@ -21,6 +21,7 @@ class Admin::JobsController < ApplicationController
       redirect_to admin_jobs_path
       flash[:notice] = "新增了一个职缺"
     else
+      flash[:alert] = "失败"
       render "new"
     end
   end
@@ -35,7 +36,9 @@ class Admin::JobsController < ApplicationController
     if @job.update(job_params)
       redirect_to admin_jobs_path
     else
+      flash[:alert] = "失败"
       render "edit"
+
     end
   end
 
@@ -57,6 +60,25 @@ class Admin::JobsController < ApplicationController
     @job.hide!
     redirect_to :back
   end
+
+  def publish_all
+    @jobs = Job.where("is_hidden = ?", true)
+    # @jobs = Job.all
+    @jobs.each do |j|
+      j.publish!
+    end
+    redirect_to :back
+  end
+
+  def hide_all
+    # @jobs = Job.where("is_hidden = ?", false)
+    @jobs = Job.all
+    @jobs.each do |j|
+      j.hide!
+    end
+    redirect_to admin_jobs_path
+  end
+
 private
 
   def job_params
