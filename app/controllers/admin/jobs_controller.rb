@@ -11,10 +11,13 @@ class Admin::JobsController < ApplicationController
   end
 
   def new
+    @jobs = Job.all
+    #@jobs是为了admin.html.erb中的全部发布／隐藏 而传的参数。
     @job = Job.new
   end
 
   def create
+    @jobs = Job.all
     @job = Job.new(job_params)
 
     if @job.save
@@ -27,10 +30,12 @@ class Admin::JobsController < ApplicationController
   end
 
   def edit
+    @jobs = Job.all
     @job = Job.find(params[:id])
   end
 
   def update
+    @jobs = Job.all
     @job = Job.find(params[:id])
 
     if @job.update(job_params)
@@ -38,7 +43,6 @@ class Admin::JobsController < ApplicationController
     else
       flash[:alert] = "失败"
       render "edit"
-
     end
   end
 
